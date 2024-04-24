@@ -30,7 +30,6 @@ function handleNewClick() {
 }
 function handleEditClick(itemData: any) {
   modalRef.value?.setModalVisible(false, itemData)
-  console.log('321', itemData)
 }
 </script>
 

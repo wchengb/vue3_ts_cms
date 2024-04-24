@@ -13,4 +13,8 @@ export interface IUser {
 export interface ISystemState {
   usersList: any[]
   usersTotalCount: number
+  roleList: any[]
+  roleTotalCount: number
+  departmentList: any[]
+  departmentTotalCount: number
 }

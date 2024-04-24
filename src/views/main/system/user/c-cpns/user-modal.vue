@@ -69,7 +69,6 @@ const editData = ref()
 const mainStore = useMainStore()
 const systemStore = useSystemStore()
 const { entireRoles, entireDepartments } = storeToRefs(mainStore)
-console.log(entireRoles, entireDepartments)
 
 // 2. 定义设置dialogVisible方法
 function setModalVisible(isNew: boolean = true, itemData?: any) {

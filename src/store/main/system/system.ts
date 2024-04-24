@@ -1,11 +1,15 @@
-import { deleteUserById, editUserData, newUserData, postUsersListData } from "@/service/main/system/system";
+import { deleteUserById, editUserData, newUserData, postUsersListData, getDepartmentData, getRoleListData } from "@/service/main/system/system";
 import { defineStore } from "pinia";
 import type { ISystemState } from './type'
 
 const useSystemStore = defineStore('system', {
   state: (): ISystemState => ({
     usersList: [],
-    usersTotalCount: 0
+    usersTotalCount: 0,
+    departmentList: [],
+    departmentTotalCount: 0,
+    roleList: [],
+    roleTotalCount: 0,
   }),
   actions: {
     async postUserListAction(queryInfo: any) {
@@ -33,6 +37,21 @@ const useSystemStore = defineStore('system', {
       console.log(editResult);
       // 2. 重新请求新的数据
       this.postUserListAction({ offset: 0, size: 10 })
+    },
+    // ----------部门----------
+    async getDepartmentListAction(queryInfo: any) {
+      const departmentResult = await getDepartmentData(queryInfo)
+      const { list, totalCount } = departmentResult.data
+      this.departmentList = list
+      this.departmentTotalCount = totalCount
+    },
+
+    // ----------角色----------
+    async getRoleListAction(queryInfo: any) {
+      const roleResult = await getRoleListData(queryInfo)
+      const { list, totalCount } = roleResult.data
+      this.roleTotalCount = totalCount
+      this.roleList = list
     }
   }
 })

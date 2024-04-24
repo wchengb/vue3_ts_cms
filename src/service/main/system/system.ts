@@ -30,3 +30,40 @@ export function editUserData(id: number, userInfo: any) {
     data: userInfo
   })
 }
+// 部门网络请求
+export function getDepartmentData(queryInfo: any) {
+  return hyRequest.post({
+    url: '/department/list',
+    data: queryInfo
+  })
+}
+
+export function deleteDepartmentData(id: number) {
+  return hyRequest.delete({
+    url: `/department/${id}`
+  })
+}
+
+export function newDepartmentData(departmentInfo: any) {
+  return hyRequest.post({
+    url: '/department',
+    data: departmentInfo
+  })
+}
+
+export function editDepartmentData(id: number, departmentInfo: any) {
+  return hyRequest.patch({
+    url: `/department/${id}`,
+    data: departmentInfo
+  })
+}
+
+// 角色网络请求
+export function getRoleListData(queryInfo: any) {
+  return hyRequest.post({
+    url: '/role/list',
+    data: queryInfo
+  })
+}
+
+

@@ -15,14 +15,10 @@ const useMainStore = defineStore('main', {
     async fetchEntireDataAction() {
       const rolesResult = await getEntireRoles()
       const departmentsResult = await getEntireDepartments()
-      console.log('11', rolesResult, departmentsResult);
-
 
       // 保存数据
       this.entireRoles = rolesResult.data.list
       this.entireDepartments = departmentsResult.data.list
-
-      console.log('22', rolesResult, departmentsResult);
 
     }
   }
