@@ -104,10 +104,14 @@ function handleNewDepartmentClick() {
 }
 
 // 删除按钮
-function handleDeleteBtnClick(id: number) {}
+function handleDeleteBtnClick(id: number) {
+  systemStore.deleteDepartmentIdAction(id)
+}
 
 //编辑按钮
 function handleEditBtnClick(itemData: any) {
+  console.log(itemData, '11')
+
   emit('editClick', itemData)
 }
 

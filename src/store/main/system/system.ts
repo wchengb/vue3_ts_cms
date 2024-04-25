@@ -1,4 +1,4 @@
-import { deleteUserById, editUserData, newUserData, postUsersListData, getDepartmentData, getRoleListData } from "@/service/main/system/system";
+import { deleteUserById, editUserData, newUserData, postUsersListData, getDepartmentData, deleteDepartmentData, newDepartmentData, editDepartmentData, getRoleListData } from "@/service/main/system/system";
 import { defineStore } from "pinia";
 import type { ISystemState } from './type'
 
@@ -44,6 +44,21 @@ const useSystemStore = defineStore('system', {
       const { list, totalCount } = departmentResult.data
       this.departmentList = list
       this.departmentTotalCount = totalCount
+    },
+    async deleteDepartmentIdAction(id: number) {
+      const deleteDepartmentResult = await deleteDepartmentData(id)
+      console.log(deleteDepartmentResult);
+      this.getDepartmentListAction({ offset: 0, size: 10 })
+    },
+    async newDepartmentAction(departmentInfo: any) {
+      const newDepartmentResult = await newDepartmentData(departmentInfo)
+      console.log(newDepartmentResult);
+      this.getDepartmentListAction({ offset: 0, size: 10 })
+    },
+    async editDepartmentAction(id: number, departmentInfo: any) {
+      const editDepartmentResult = await editDepartmentData(id, departmentInfo)
+      console.log(editDepartmentResult);
+      this.getDepartmentListAction({ offset: 0, size: 10 })
     },
 
     // ----------角色----------
