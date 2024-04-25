@@ -1,13 +1,15 @@
 <template>
   <div class="menu">
-    <h2>menu</h2>
+    <menuContent />
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import menuContent from './c-cpns/menu-content.vue'
+</script>
 
 <style lang="less" scoped>
-.menu {
-  color: red;
-}
+// .menu {
+//   color: red;
+// }
 </style>

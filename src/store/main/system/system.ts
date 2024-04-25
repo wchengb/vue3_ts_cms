@@ -1,4 +1,4 @@
-import { deleteUserById, editUserData, newUserData, postUsersListData, getDepartmentData, deleteDepartmentData, newDepartmentData, editDepartmentData, getRoleListData } from "@/service/main/system/system";
+import { deleteUserById, editUserData, newUserData, postUsersListData, getDepartmentData, deleteDepartmentData, newDepartmentData, editDepartmentData, getMenuData, getRoleListData } from "@/service/main/system/system";
 import { defineStore } from "pinia";
 import type { ISystemState } from './type'
 
@@ -8,6 +8,7 @@ const useSystemStore = defineStore('system', {
     usersTotalCount: 0,
     departmentList: [],
     departmentTotalCount: 0,
+    menuList: [],
     roleList: [],
     roleTotalCount: 0,
   }),
@@ -59,6 +60,13 @@ const useSystemStore = defineStore('system', {
       const editDepartmentResult = await editDepartmentData(id, departmentInfo)
       console.log(editDepartmentResult);
       this.getDepartmentListAction({ offset: 0, size: 10 })
+    },
+
+    // ----------菜单----------
+    async getMenuListData(queryInfo: any) {
+      const menuResult = await getMenuData(queryInfo)
+      const { list } = menuResult.data
+      this.menuList = list
     },
 
     // ----------角色----------

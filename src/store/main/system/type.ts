@@ -15,6 +15,7 @@ export interface ISystemState {
   usersTotalCount: number
   roleList: any[]
   roleTotalCount: number
+  menuList: any[]
   departmentList: any[]
   departmentTotalCount: number
 }

@@ -67,7 +67,10 @@ defineExpose({ fetchRoleListData })
 const { roleTotalCount, roleList } = storeToRefs(systemStore)
 
 // 点击事件
-function handleNewRoleClick() {}
+const emit = defineEmits(['newRoleClick'])
+function handleNewRoleClick() {
+  emit('newRoleClick')
+}
 
 function handleEditClick() {}
 function handleDeleteClick() {}

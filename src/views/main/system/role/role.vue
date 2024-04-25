@@ -1,8 +1,8 @@
 <template>
   <div class="role">
     <roleSearch @query-click="handleQueryClick" @reset-click="handleResetClick" />
-    <roleContent ref="contentRef" />
-    <!-- <roleModal /> -->
+    <roleContent @new-role-click="handleNewClick" ref="contentRef" />
+    <roleModal ref="modalRef" />
   </div>
 </template>
 
@@ -13,17 +13,19 @@ import roleContent from './c-cpns/role-content.vue'
 
 import { ref } from 'vue'
 
+// 对content
 const contentRef = ref<InstanceType<typeof roleContent>>()
-
 function handleQueryClick(searchForm: any) {
-  console.log('1')
-
   contentRef.value?.fetchRoleListData(searchForm)
 }
 function handleResetClick() {
-  console.log('2')
-
   contentRef.value?.fetchRoleListData()
+}
+
+// 对modal
+const modalRef = ref<InstanceType<typeof roleModal>>()
+function handleNewClick() {
+  modalRef.value?.setModalVisible()
 }
 </script>
 

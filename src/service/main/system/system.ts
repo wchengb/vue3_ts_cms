@@ -57,6 +57,14 @@ export function editDepartmentData(id: number, departmentInfo: any) {
     data: departmentInfo
   })
 }
+// 菜单网络请求
+export function getMenuData(queryInfo: any) {
+  return hyRequest.post({
+    url: '/menu/list',
+    data: queryInfo
+  })
+}
+
 
 // 角色网络请求
 export function getRoleListData(queryInfo: any) {
