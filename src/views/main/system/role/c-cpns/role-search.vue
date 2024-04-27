@@ -15,7 +15,7 @@
         <el-col :span="8">
           <el-form-item label="创建时间" prop="createAt">
             <el-date-picker
-              v-model="searchForm.intro"
+              v-model="searchForm.createAt"
               type="daterange"
               range-separator="-"
               start-placeholder="开始时间"
