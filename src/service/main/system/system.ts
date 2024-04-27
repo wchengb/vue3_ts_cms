@@ -57,6 +57,7 @@ export function editDepartmentData(id: number, departmentInfo: any) {
     data: departmentInfo
   })
 }
+
 // 菜单网络请求
 export function getMenuData(queryInfo: any) {
   return hyRequest.post({
@@ -65,12 +66,29 @@ export function getMenuData(queryInfo: any) {
   })
 }
 
-
 // 角色网络请求
 export function getRoleListData(queryInfo: any) {
   return hyRequest.post({
     url: '/role/list',
     data: queryInfo
+  })
+}
+export function newRoleData(roleInfo: any) {
+  return hyRequest.post({
+    url: '/role',
+    data: roleInfo
+  })
+}
+export function deleteRoleListData(id: number) {
+  return hyRequest.delete({
+    url: `/role/${id}`
+  })
+}
+
+export function editRoleListData(id: number, RoleInfo: any) {
+  return hyRequest.patch({
+    url: `/role/${id}`,
+    data: RoleInfo
   })
 }
 

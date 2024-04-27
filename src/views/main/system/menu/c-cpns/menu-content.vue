@@ -42,7 +42,7 @@ import { reactive } from 'vue'
 const systemStore = useSystemStore()
 const tableData = {}
 
-systemStore.getMenuListData(tableData)
+systemStore.getMenuListDataAction(tableData)
 
 const { menuList } = storeToRefs(systemStore)
 </script>

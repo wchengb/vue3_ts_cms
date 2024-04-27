@@ -1,4 +1,4 @@
-import { deleteUserById, editUserData, newUserData, postUsersListData, getDepartmentData, deleteDepartmentData, newDepartmentData, editDepartmentData, getMenuData, getRoleListData } from "@/service/main/system/system";
+import { deleteUserById, editUserData, newUserData, postUsersListData, getDepartmentData, deleteDepartmentData, newDepartmentData, editDepartmentData, getMenuData, getRoleListData, newRoleData, deleteRoleListData, editRoleListData } from "@/service/main/system/system";
 import { defineStore } from "pinia";
 import type { ISystemState } from './type'
 
@@ -63,7 +63,7 @@ const useSystemStore = defineStore('system', {
     },
 
     // ----------菜单----------
-    async getMenuListData(queryInfo: any) {
+    async getMenuListDataAction(queryInfo: any) {
       const menuResult = await getMenuData(queryInfo)
       const { list } = menuResult.data
       this.menuList = list
@@ -75,6 +75,19 @@ const useSystemStore = defineStore('system', {
       const { list, totalCount } = roleResult.data
       this.roleTotalCount = totalCount
       this.roleList = list
+    },
+    async newRoleAction(roleInfo: any) {
+      const newroleResult = await newRoleData(roleInfo)
+      console.log(newroleResult, '43');
+      this.getRoleListAction({ offset: 0, size: 10 })
+    },
+    async deleteRoleAction(id: number) {
+      const deleteResult = await deleteRoleListData(id)
+      this.getRoleListAction({ offset: 0, size: 10 })
+    },
+    async editRoleAction(id: number, roleInfo: any) {
+      const editResult = await editRoleListData(id, roleInfo)
+      this.getRoleListAction({ offset: 0, size: 10 })
     }
   }
 })

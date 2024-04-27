@@ -5,7 +5,7 @@
       <el-button type="primary" @click="handleNewRoleClick">新建用户</el-button>
     </div>
     <div class="table">
-      <el-table :data="roleList" style="width: 100%">
+      <el-table :data="roleList" style="width: 100%" border>
         <el-table-column align="center" type="selection" width="50px" />
         <el-table-column align="center" label="序号" type="index" width="80px" />
         <el-table-column align="center" label="角色名称" prop="name"></el-table-column>
@@ -22,8 +22,10 @@
         </el-table-column>
         <el-table-column align="center" label="操作" width="180px">
           <template #default="scope">
-            <el-button type="primary" icon="Edit" text @click="handleEditClick()">编辑</el-button>
-            <el-button type="danger" icon="Delete" text @click="handleDeleteClick()"
+            <el-button type="primary" icon="Edit" text @click="handleEditClick(scope.row)"
+              >编辑</el-button
+            >
+            <el-button type="danger" icon="Delete" text @click="handleDeleteClick(scope.row.id)"
               >删除</el-button
             >
           </template>
@@ -67,13 +69,17 @@ defineExpose({ fetchRoleListData })
 const { roleTotalCount, roleList } = storeToRefs(systemStore)
 
 // 点击事件
-const emit = defineEmits(['newRoleClick'])
+const emit = defineEmits(['newRoleClick', 'editRoleClick'])
 function handleNewRoleClick() {
   emit('newRoleClick')
 }
 
-function handleEditClick() {}
-function handleDeleteClick() {}
+function handleEditClick(itemdata: any) {
+  emit('editRoleClick', itemdata)
+}
+function handleDeleteClick(id: number) {
+  systemStore.deleteRoleAction(id)
+}
 
 function handleSizeChange() {
   fetchRoleListData()

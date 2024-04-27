@@ -1,7 +1,11 @@
 <template>
   <div class="role">
     <roleSearch @query-click="handleQueryClick" @reset-click="handleResetClick" />
-    <roleContent @new-role-click="handleNewClick" ref="contentRef" />
+    <roleContent
+      @new-role-click="handleNewClick"
+      @edit-role-click="handleEditClick"
+      ref="contentRef"
+    />
     <roleModal ref="modalRef" />
   </div>
 </template>
@@ -26,6 +30,9 @@ function handleResetClick() {
 const modalRef = ref<InstanceType<typeof roleModal>>()
 function handleNewClick() {
   modalRef.value?.setModalVisible()
+}
+function handleEditClick(itemdata: any) {
+  modalRef.value?.setModalVisible(false, itemdata)
 }
 </script>
 
