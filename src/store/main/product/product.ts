@@ -1,11 +1,13 @@
-import { getCategoryListData, newCategoryListData, deleteCategoryListData, editCategoryListData } from '@/service/main/product/product'
+import { getCategoryListData, newCategoryListData, deleteCategoryListData, editCategoryListData, getGoodsListData } from '@/service/main/product/product'
 import type { ISproductionState } from './type'
 import { defineStore } from "pinia";
 
 const useProduct = defineStore('product', {
   state: (): ISproductionState => ({
     categoryTotalCount: 0,
-    categoryList: []
+    categoryList: [],
+    goodsTotalCount: 0,
+    goodsList: []
   }),
   actions: {
     async getProductListAction(queryInfo: any) {
@@ -26,6 +28,14 @@ const useProduct = defineStore('product', {
     async editProductAction(id: number, queryInfo: any) {
       const editResult = await editCategoryListData(id, queryInfo)
       this.getProductListAction({ size: 10, offset: 0 })
+    },
+    // 商品信息
+    async getGoodsListAction(queryInfo: any) {
+      const goodsResult = await getGoodsListData(queryInfo)
+      console.log('12', goodsResult);
+      const { list, totalCount } = goodsResult.data
+      this.goodsTotalCount = totalCount
+      this.goodsList = list
     }
   }
 })

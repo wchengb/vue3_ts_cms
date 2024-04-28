@@ -27,3 +27,12 @@ export function editCategoryListData(id: number, queryInfo: any) {
     data: queryInfo
   })
 }
+
+// 商品信息
+export function getGoodsListData(queryInfo: any) {
+  return hyRequest.post({
+    url: '/goods/list',
+    data: queryInfo
+  })
+}
+
