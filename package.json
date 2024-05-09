@@ -17,6 +17,7 @@
     "@wangeditor/editor": "^5.1.23",
     "@wangeditor/editor-for-vue": "^5.1.12",
     "axios": "^1.6.5",
+    "countup.js": "^2.8.0",
     "dayjs": "^1.11.10",
     "element-plus": "^2.5.1",
     "normalize.css": "^8.0.1",
